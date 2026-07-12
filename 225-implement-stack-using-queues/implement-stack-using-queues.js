@@ -1,8 +1,11 @@
 
 var MyStack = function () {
-    /** Using Two Queues */
-    this.q1 = []
-    this.q2 = []
+    // /** Using Two Queues */
+    // this.q1 = []
+    // this.q2 = []
+
+    /** Using One Queues */
+    this.q = []
 };
 
 /** 
@@ -10,46 +13,71 @@ var MyStack = function () {
  * @return {void}
  */
 MyStack.prototype.push = function (x) {
-    /** Using Two Queues */
-    this.q1.push(x)
+    // /** Using Two Queues */
+    // this.q1.push(x)
+
+    /** Using One Queues */
+    this.q.push(x)
+
+
 };
 
 /**
  * @return {number}
  */
 MyStack.prototype.pop = function () {
-    let n = this.q1.length
+    // /** Using Two Queues */
+    // let n = this.q1.length
+    // for (let i = 0; i < n - 1; i++) {
+    //     this.q2.push(this.q1.shift())
+    // }
+    // let ans = this.q1.shift();
+    // let temp = this.q1
+    // this.q1 = this.q2
+    // this.q2 = temp
+    // return ans;
+
+    /** Using One Queues */
+    let n = this.q.length
     for (let i = 0; i < n - 1; i++) {
-        this.q2.push(this.q1.shift())
+        this.q.push(this.q.shift())
     }
-    let ans = this.q1.shift();
-    let temp = this.q1
-    this.q1 = this.q2
-    this.q2 = temp
-    return ans;
+    return this.q.shift();
 };
 
 /**
  * @return {number}
  */
 MyStack.prototype.top = function () {
-    let n = this.q1.length
+    // /** Using Two Queues */
+    // let n = this.q1.length
+    // for (let i = 0; i < n - 1; i++) {
+    //     this.q2.push(this.q1.shift())
+    // }
+    // let frontEle = this.q1[0];
+    // this.q2.push(this.q1.shift())
+    // let temp = this.q1
+    // this.q1 = this.q2
+    // this.q2 = temp
+    // return frontEle;
+
+    /** Using One Queues */
+    let n = this.q.length
     for (let i = 0; i < n - 1; i++) {
-        this.q2.push(this.q1.shift())
+        this.q.push(this.q.shift())
     }
-    let frontEle = this.q1[0];
-    this.q2.push(this.q1.shift())
-    let temp = this.q1
-    this.q1 = this.q2
-    this.q2 = temp
-    return frontEle;
+    let frontEle = this.q[0]
+    this.q.push(this.q.shift());
+    return frontEle
 };
 
 /**
  * @return {boolean}
  */
 MyStack.prototype.empty = function () {
-    return this.q1.length === 0
+    // /** Using Two Queues */
+    // return this.q1.length === 0
+    return this.q.length === 0
 };
 
 /** 
