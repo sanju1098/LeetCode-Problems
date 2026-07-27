@@ -5,7 +5,8 @@
 var evalRPN = function (tokens) {
     let stack = []
     for (let i = 0; i < tokens.length; i++) {
-        if (tokens[i] === "+" || tokens[i] === "-" || tokens[i] === "*" || tokens[i] === "/") {
+        // if (tokens[i] === "+" || tokens[i] === "-" || tokens[i] === "*" || tokens[i] === "/") {
+        if (["*", "+", "-", "/"].includes(tokens[i])) {
             let a = stack.pop()
             let b = stack.pop()
             let ans = eval(`${b} ${tokens[i]} ${a}`)
